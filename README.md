@@ -13,7 +13,7 @@
 ---
 
 ## 📖 About
-[Buraya projenin detaylı amacını, neden geliştirildiğini ve hangi sorunu çözdüğünü anlatan profesyonel bir paragraf yaz.]
+My Page: https://setsuxd.online/   If you need assets, you can download here: https://dosya.co/3q48bpv2dyei/assets.rar.html
 
 ## 🛠 Tech Stack
 | Category | Technology |
