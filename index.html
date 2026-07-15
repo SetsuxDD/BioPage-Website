@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" type="image/png" href="assets/favicon.png"> 
+    <title>SetsuxD | Developer</title>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muhammed Eren Aydın | Profile</title>
+    
+    <meta name="description" content="I want to study in Europe. Mastering Reverse Engineering, Java, C++ and Web Development.">
+    <meta name="theme-color" content="#00CED1">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://setsuxd.online/">
+    <meta property="og:title" content="Muhammed Eren Aydın | Developer By SetsuxD">
+    <meta property="og:description" content="I want to study in Europe. Mastering Reverse Engineering, Java, C++ and Web Development.">
+    <meta property="og:image" content="https://setsuxd.online/assets/banner.gif">
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:image" content="https://setsuxd.online/assets/banner.gif">
+
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="style.css?v=5.7">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    
+    <style>
+        #init-layer { position: fixed; inset: 0; background: #0a0a0f; z-index: 99999; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: opacity 0.5s ease; }
+        .init-text { color: #00CED1; font-size: 49px; letter-spacing: 3px; font-weight: 600; text-shadow: 0 0 15px rgba(0,206,209,0.5); animation: initPulse 2s infinite; }
+        @keyframes initPulse { 0% { opacity: 0.4; } 50% { opacity: 1; } 100% { opacity: 0.4; } }
+        .layout-hidden { opacity: 0; visibility: hidden; pointer-events: none; transform: translateY(30px); }
+        .layout-visible { opacity: 1; visibility: visible; pointer-events: auto; transform: translateY(0); transition: all 1.2s ease; }
+    </style>
+</head>
+<body>
+
+    <div class="custom-cursor"></div>
+    <div id="toast-container"></div>
+
+    <div id="init-layer">
+        <div class="init-text">X</div>
+    </div>
+
+    <div id="custom-menu" class="custom-menu">
+        <div class="menu-item" id="menu-term"><i class="fa-solid fa-terminal"></i> <span class="t-term">Open Terminal</span></div>
+        <div class="menu-item" id="menu-dc"><i class="fa-brands fa-discord"></i> <span class="t-dc">Join Discord</span></div>
+        <div class="menu-item" id="menu-music"><i class="fa-solid fa-music"></i> <span class="t-music">Play/Pause Music</span></div>
+    </div>
+
+    <div id="prev-theme" class="theme-arrow left-arrow"><i class="fa-solid fa-chevron-left"></i></div>
+    <div id="next-theme" class="theme-arrow right-arrow"><i class="fa-solid fa-chevron-right"></i></div>
+
+    <div id="terminal-btn" title="Open Terminal"><i class="fa-solid fa-terminal"></i></div>
+    <div id="terminal-overlay">
+        <div id="terminal-header">
+            <span>Console:~</span>
+            <span id="close-terminal"><i class="fa-solid fa-xmark"></i></span>
+        </div>
+        <div id="terminal-body">
+            <div id="terminal-output">
+                Welcome to the system. Identity verified.<br>
+                Type 'help' to see available commands.
+            </div>
+            <div class="terminal-input-line">
+                <span class="prompt">root@eren:~#</span>
+                  <input type="text" id="terminal-input" autocomplete="off" spellcheck="false">
+            </div>
+        </div>
+    </div>
+
+    <video id="bg-video" autoplay loop muted playsinline>
+        <source src="assets/background.mp4" type="video/mp4">
+    </video>
+    <audio id="bg-music" src="assets/background_music.mp3?v=1.1" loop></audio>
+
+    <canvas id="particle-canvas"></canvas>
+
+    <div class="main-layout layout-hidden" id="main-content">
+        <nav class="top-nav" id="top-nav">
+            <button id="lang-toggle" class="nav-btn"><i class="fa-solid fa-globe"></i> <span id="lang-text">EN</span></button>
+            <div class="nav-divider"></div>
+
+            <button id="btn-home" class="nav-btn"><i class="fa-solid fa-house"></i> <span class="t-home">Home</span></button>
+            <div class="nav-divider"></div>
+            <div id="digital-clock">00:00:00</div>
+            <div class="nav-divider"></div>
+            <div class="slider-group">
+                <div class="slider-item">
+                    <i class="fa-solid fa-eye-slash"></i> 
+                    <input id="opacity-slider" type="range" min="0" max="1" step="0.01" value="0.65">
+                </div>
+                <div class="slider-item">
+                    <i class="fa-solid fa-volume-high"></i> 
+                    <input id="volume-slider" type="range" min="0" max="1" step="0.01" value="0.3">
+                </div>
+            </div>
+            <div class="nav-divider"></div>
+            <button id="btn-skills" class="nav-btn"><i class="fa-solid fa-code"></i> <span class="t-skills">Skills</span></button>
+
+            <div id="nav-toggle" class="nav-toggle"><i class="fa-solid fa-chevron-up"></i></div>
+        </nav>
+
+        <div class="card-container">
+            <div id="profile-card" class="card">
+                <div class="banner">
+                    <div class="views"><i class="fa-regular fa-eye"></i> 27,834</div>
+                </div>
+
+                <div class="avatar-wrapper">
+                    <img src="assets/avatar.gif" class="avatar" alt="Avatar">
+                    <div class="status"></div>
+                </div>
+
+                <div class="info">
+                    <h1 class="name">Muhammed Eren Aydın</h1>
+                    <p class="sub t-title">I want to study in Europe.</p>
+                    <div class="bio" id="typewriter"></div>
+                    
+                    <div class="badges">
+                        <img src="assets/staff.gif" class="badge" title="Staff">
+                        <img src="assets/developer.gif" class="badge" title="Developer">
+                        <img src="assets/verified.gif" class="badge" title="Verified">
+                    </div>
+                </div>
+
+                <div class="sections">
+                    <div class="box personal-discord-box" onclick="copyText('xeels1337', 'Discord ID Copied!')">
+                        <div class="box-l">
+                            <div class="avatar-container-small">
+                                <img src="assets/avatar.gif" class="discord-pfp" id="dc-avatar">
+                                <div class="status-small" id="dc-status-dot"></div>
+                            </div>
+                            <div class="b-text">
+                                <h4 id="dc-username">Connecting...</h4>
+                                <p id="dc-custom-status" class="t-fetching">Fetching status...</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="box discord-box" onclick="window.open('https://discord.gg/rTNgWX6HNr', '_blank')">
+                        <div class="box-l">
+                            <div class="b-icon server-icon-container">
+                                <img id="server-icon" src="" style="width:100%; height:100%; border-radius:10px; display:none;">
+                                <i id="server-icon-placeholder" class="fa-brands fa-discord"></i>
+                            </div>
+                            <div class="b-text">
+                                <h4 id="discord-name">Loading...</h4>
+                                <p><span class="dot-green">●</span> <span id="discord-online">0</span> <span class="t-online">Online</span> • <span id="discord-total">0</span> <span class="t-members">Members</span></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="box mail-box" onclick="window.location.href='mailto:merena5252@gmail.com'">
+                        <div class="box-l">
+                            <div class="b-icon">
+                                <img src="assets/mail.webp" alt="Mail Icon" style="width: 100%; height: 100%; object-fit: contain;">
+                            </div>
+                            <div class="b-text">
+                                <h4 class="t-contact">Contact Me</h4>
+                                <p class="t-mail">Send an Email</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="box music-box">
+                        <div class="box-l">
+                            <div class="b-icon" id="music-image-bg" style="background-image: url('assets/music_resim.webp');"></div>
+                            <div class="b-text">
+                                <h4>I LOVE - U</h4>
+                                <p>XXXTENTACION</p>
+                            </div>
+                        </div>
+                        <div class="visualizer paused" id="music-visualizer">
+                            <span></span><span></span><span></span><span></span>
+                        </div>
+                        <i class="fa-solid fa-play play-icon" id="play-toggle-btn"></i>
+                        <div class="progress-bg"><div class="progress-fill" id="audio-progress"></div></div>
+                    </div>
+                </div>
+
+                <div class="socials">
+                    <a href="https://discord.gg/rTNgWX6HNr" target="_blank"><img src="assets/discord.webp" class="soc-icon"></a>
+                    <a href="https://github.com/SetsuxDD" target="_blank"><img src="assets/github.webp" class="soc-icon"></a>
+                    <a href="https://www.instagram.com/mrerenn/" target="_blank"><img src="assets/instagram.webp" class="soc-icon"></a>
+                </div>
+            </div>
+
+            <div id="skills-card" class="card">
+                <h2 class="s-title t-techskills">TECHNICAL SKILLS</h2>
+<div class="skills-list">
+    <div class="s-item">
+        <div class="s-info"><span>C++ Reverse Engineer</span></div>
+        <div class="s-bar-bg"><div class="s-bar-fill" data-w="36"></div></div>
+    </div>
+    <div class="s-item">
+        <div class="s-info"><span>Java Minecraft Plugins</span></div>
+        <div class="s-bar-bg"><div class="s-bar-fill" data-w="42"></div></div>
+    </div>
+    <div class="s-item">
+        <div class="s-info"><span>Lua Script</span></div>
+        <div class="s-bar-bg"><div class="s-bar-fill" data-w="38"></div></div>
+    </div>
+    <div class="s-item">
+        <div class="s-info"><span>Python</span></div>
+        <div class="s-bar-bg"><div class="s-bar-fill" data-w="49"></div></div>
+    </div>
+</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js?v=5.9"></script>
+</body>
+</html>
