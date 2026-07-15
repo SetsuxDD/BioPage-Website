@@ -1,4 +1,4 @@
-<h1 align="center">🚀 [Project Name]</h1>
+<h1 align="center">🚀 [BioPage WebSite]</h1>
 
 <p align="center">
   <b>[Bir cümlelik kısa ve etkileyici proje açıklaması]</b>
